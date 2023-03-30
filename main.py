@@ -20,5 +20,14 @@ def training(prof):
     return render_template('training.html', title=title, professional_orientation=professional_orientation)
 
 
+@app.route('/list_prof/<display_method>')
+def list_prof(display_method):
+    list_professions = ["инженер-исследователь", "пилот", "строитель", "экзобиолог", "врач",
+                        "инженер по терраформированию", "климатолог", "спеиалист по радиаионной защите", "астролог",
+                        "гляциолог", "инженер жизнеобеспечения", "метеоролог", "оператор марсохода", "киберинженер",
+                        "штурман", "пилот дронов"]
+    return render_template('list_prof.html', list_professions=list_professions, display_methodist=display_method)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
