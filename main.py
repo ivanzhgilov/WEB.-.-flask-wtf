@@ -63,5 +63,9 @@ def distribution():
     return render_template('distribution.html', astronauts=astronauts)
 
 
+@app.route('/table/<sex>/<age>')
+def table(sex, age):
+    return render_template('table.html', age=int(age), sex=sex)
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
