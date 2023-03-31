@@ -1,6 +1,9 @@
 from flask import Flask, render_template
+from forms.emergency_access import EmergencyAccess
+from flask import redirect
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
 @app.route('/')
@@ -43,6 +46,15 @@ def answer():
         'ready': True
     }
     return render_template('auto_answer.html', **values)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = EmergencyAccess()
+    access = False
+    if form.validate_on_submit():
+        access = True
+    return render_template('login.html', title='Авторизация', form=form, access=access)
 
 
 if __name__ == '__main__':
