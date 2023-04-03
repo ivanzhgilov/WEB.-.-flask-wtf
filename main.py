@@ -49,7 +49,7 @@ def answer():
 
 
 @app.route('/emergency_access', methods=['GET', 'POST'])
-def login():
+def emergency_access():
     form = EmergencyAccess()
     access = False
     if form.validate_on_submit():
